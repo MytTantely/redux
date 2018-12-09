@@ -29,8 +29,9 @@ console.log(this.props);
   }
 }
 
-const mapStateToProps = state => {
-  return state;
-}
+const mapStateToProps = state => ({
+  products: state.products,
+  user: state.user
+});
 
 export default connect(mapStateToProps)(App);
