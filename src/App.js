@@ -3,9 +3,9 @@ import logo from './logo.svg';
 import './App.css';
 
 import { connect } from 'react-redux';
-import { updateUser } from './actions/user-actions';
+import { updateUser, apiRequest } from './actions/user-actions';
 
-import { bindActionCreators } from 'redux';
+// import { bindActionCreators } from 'redux';
 
 class App extends Component {
   constructor(props) {
@@ -46,9 +46,9 @@ class App extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    products: state.products,
-      user: state.user,
-      userPlusProps: `${state.user} ${props.aRandomProps}`
+  products: state.products,
+  user: state.user,
+  userPlusProps: `${state.user} ${props.aRandomProps}`
 })
 
 // const mapActionsToProps = (dispatch, props) => (
@@ -58,25 +58,11 @@ const mapStateToProps = (state, props) => ({
 //     },
 //     dispatch
 //   )
-  
+
 // );
 
-const mapActionsToProps = (dispatch, props) => {
-  console.log(`${JSON.stringify(props)} - inside mapActionsToProps`);
-  return (
-    bindActionCreators(
-      {
-        onUpdateUser: updateUser
-      },
-      dispatch
-    )
-    
-  )
-};
-
-const mergeProps = (propsFromState, propsFromDispatch, ownProps) => {
-  console.log(propsFromState, propsFromDispatch, ownProps);
-  return {};
+const mapActionsToProps = {
+  onUpdateUser: updateUser
 }
 
-export default connect(mapStateToProps, mapActionsToProps, mergeProps)(App);
+export default connect(mapStateToProps, mapActionsToProps)(App);
